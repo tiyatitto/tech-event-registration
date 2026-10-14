@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAKSHAK | MACE Tech Fest Registration</title>
+<style>
+:root{--bg:#07070f;--panel:#0f0f22;--panel2:#15152e;--line:#2a2a52;--cyan:#22e6ff;--pink:#ff3df2;--lime:#b6ff3b;--ink:#eceaff;--muted:#8f8fb5;--danger:#ff5a72;--mono:ui-monospace,"Cascadia Code",Consolas,Menlo,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(7,7,15,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav b{font-family:var(--mono);letter-spacing:.12em;color:var(--cyan)}
+nav div a{margin-left:18px;font-size:.9rem;color:var(--muted)}nav div a:hover{color:var(--cyan)}
+.hero{position:relative;min-height:calc(100vh - 50px);display:flex;flex-direction:column;justify-content:center;text-align:center;padding:60px 20px 90px;overflow:hidden;
+ background:radial-gradient(circle at 20% 20%,rgba(255,61,242,.18),transparent 40%),radial-gradient(circle at 80% 70%,rgba(34,230,255,.18),transparent 45%),
+ linear-gradient(rgba(34,230,255,.05) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(34,230,255,.05) 1px,transparent 1px) 0 0/44px 44px}
+.floaters span{position:absolute;opacity:.45;animation:float var(--d) ease-in-out infinite;animation-delay:var(--l);filter:drop-shadow(0 0 10px rgba(34,230,255,.5));user-select:none}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-28px) rotate(10deg)}}
+.hero-in{position:relative;z-index:2;max-width:860px;margin:0 auto}
+.term{font-family:var(--mono);color:var(--lime);font-size:.95rem;min-height:1.5em}
+.term i{display:inline-block;width:9px;height:1em;background:var(--lime);vertical-align:-2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+h1{margin:10px 0;font-size:clamp(3.2rem,15vw,8rem);line-height:1;letter-spacing:.06em;font-weight:900;
+ background:linear-gradient(90deg,var(--cyan),var(--pink),var(--cyan));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;
+ filter:drop-shadow(0 0 22px rgba(255,61,242,.35))}
+@keyframes shine{to{background-position:200% center}}
+.tag{font-size:clamp(1rem,2.6vw,1.3rem);color:var(--ink);opacity:.9;margin:6px auto 4px;max-width:640px}
+.org{color:var(--muted);margin:0 0 18px}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.chips span,.chips button{border:1px solid var(--line);background:rgba(15,15,34,.7);padding:6px 14px;border-radius:99px;font-size:.9rem}
+.chips button{font:inherit;color:var(--ink);cursor:pointer}.chips button:hover{border-color:var(--cyan);color:var(--cyan)}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:10px;padding:12px 22px;color:#07070f;background:linear-gradient(90deg,var(--cyan),var(--lime));box-shadow:0 0 22px rgba(34,230,255,.35);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}.btn:disabled{opacity:.5;cursor:wait}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn.danger{background:none;color:var(--danger);border:1px solid var(--danger);box-shadow:none}
+.ticker{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--line);background:rgba(15,15,34,.85);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:var(--mono);font-size:.85rem;color:var(--cyan)}
+.ticker div{display:inline-block;animation:tick 30s linear infinite}
+@keyframes tick{to{transform:translateX(-50%)}}
+section.wrap{max-width:1000px;margin:0 auto;padding:70px 18px 10px}
+h2.title{font-size:clamp(1.6rem,4vw,2.2rem);margin:0 0 6px}
+h2.title em{font-style:normal;color:var(--pink);font-family:var(--mono)}
+.sub{color:var(--muted);margin:0 0 26px}
+.feat{display:flex;gap:22px;align-items:center;padding:26px;border-radius:18px;margin-bottom:18px;border:1px solid var(--pink);background:linear-gradient(120deg,rgba(255,61,242,.16),rgba(34,230,255,.1));box-shadow:0 0 34px rgba(255,61,242,.2)}
+.feat .big{font-size:4.2rem}
+.feat h3{margin:6px 0;font-size:1.7rem}.feat p{margin:0 0 14px;color:var(--muted)}
+.pill{font:700 .72rem var(--mono);letter-spacing:.1em;color:#07070f;background:var(--pink);padding:3px 10px;border-radius:99px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.ev{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:4px;transition:.2s;cursor:pointer}
+.ev:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 8px 28px rgba(34,230,255,.15)}
+.ev .em{font-size:2.2rem}.ev .cat{font:.7rem var(--mono);color:var(--cyan);text-transform:uppercase;letter-spacing:.08em}
+.ev h4{margin:2px 0;font-size:1.05rem}.ev p{margin:0 0 10px;color:var(--muted);font-size:.88rem;flex:1}
+.link{background:none;border:0;color:var(--lime);font:600 .9rem var(--mono);cursor:pointer;text-align:left;padding:0}
+.link:hover{text-decoration:underline}
+.tabs{display:flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:5px;margin-bottom:16px}
+.tabs button{flex:1;border:0;background:none;color:var(--muted);padding:10px;border-radius:10px;font:600 1rem inherit;font-family:inherit;cursor:pointer}
+.tabs button.on{background:linear-gradient(90deg,var(--cyan),var(--lime));color:#07070f}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:14px}
+.card h2{margin:0 0 14px;font-size:1.2rem}
+form.f{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:flex;flex-direction:column;gap:5px;font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.full{grid-column:1/-1}
+input,select{font:inherit;text-transform:none;letter-spacing:0;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+input:focus,select:focus{outline:2px solid var(--cyan);border-color:transparent}
+.actions{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.row{display:flex;gap:10px}.row input{flex:1}
+.msg{padding:12px 14px;border-radius:10px;margin-bottom:14px;font-size:.92rem}
+.msg.err{background:rgba(255,90,114,.14);color:var(--danger);border:1px solid var(--danger)}
+.msg.ok{background:rgba(182,255,59,.12);color:var(--lime);border:1px solid var(--lime)}
+.idbox{font:700 1.7rem var(--mono);letter-spacing:.08em;color:var(--cyan);border:2px dashed var(--cyan);border-radius:12px;padding:14px;text-align:center;margin:12px 0;text-shadow:0 0 14px rgba(34,230,255,.6)}
+.reg{display:flex;flex-direction:column;gap:8px}.reg.cancelled{opacity:.55}
+.reg .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.reg h3{margin:0;font-size:1.1rem}
+.badge{font:700 .7rem var(--mono);padding:3px 10px;border-radius:99px;text-transform:uppercase}
+.badge.active{background:rgba(182,255,59,.15);color:var(--lime)}.badge.cancelled{background:rgba(255,90,114,.15);color:var(--danger)}
+.meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px 16px;font-size:.9rem;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+.event-meta{display:grid;gap:5px;margin:4px 0 12px;color:var(--muted);font-size:.84rem}
+.event-meta span{display:flex;gap:8px;align-items:flex-start}.ev .actions{margin-top:auto}
+.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}.cal-head,.cal-day{min-height:56px;text-align:center}
+.cal-head{color:var(--muted);font:.75rem var(--mono);padding:8px 2px}.cal-day{border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer;padding:6px 2px}
+.cal-day:disabled{cursor:default;opacity:.32}.cal-day:hover,.cal-day.selected{border-color:var(--cyan);color:var(--cyan)}.cal-day.fest-day{border-color:var(--pink);box-shadow:inset 0 0 14px rgba(255,61,242,.12)}
+.cal-day small{display:block;color:var(--lime);font:.65rem var(--mono)}.calendar-events{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.calendar-events h3{margin:0 0 8px}.calendar-events .link{display:block;padding:7px 0}
+.event-details{grid-column:1/-1;padding:12px;border-left:2px solid var(--cyan);background:rgba(34,230,255,.06);color:var(--muted)}
+.event-details strong{color:var(--ink)}
+.empty{text-align:center;color:var(--muted);padding:20px}
+dialog{border:1px solid var(--cyan);border-radius:16px;background:var(--panel);color:var(--ink);max-width:640px;width:calc(100% - 32px);padding:22px}
+dialog::backdrop{background:rgba(0,0,0,.65)}
+footer{text-align:center;color:var(--muted);font-family:var(--mono);font-size:.8rem;padding:50px 20px 30px}
+@media(max-width:600px){form.f{grid-template-columns:1fr}.feat{flex-direction:column;text-align:center}nav div a{margin-left:10px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><b>&lt;/TAKSHAK&gt;</b><div><a href="#home">Home</a><a href="#events">Events</a><a href="#register" id="navRegister">Register</a><a href="#register" id="navFind">My registration</a></div></nav>
+
+<header class="hero" id="home">
+  <div class="floaters" id="floaters"></div>
+  <div class="hero-in">
+    <div class="term"><span id="typed"></span><i></i></div>
+    <h1 id="festName">TAKSHAK</h1>
+    <p class="tag" id="tag"></p>
+    <p class="org" id="org"></p>
+    <div class="chips" id="chips"></div>
+    <div class="cta"><a class="btn" href="#register" id="registerNow">🚀 Register now</a><a class="btn ghost" href="#events">🔭 Explore events</a></div>
+  </div>
+  <div class="ticker"><div id="ticker"></div></div>
+</header>
+
+<section class="wrap" id="events">
+  <h2 class="title"><em>&gt;</em> Events</h2>
+  <p class="sub">Pick your arena. One click takes you to registration.</p>
+  <div id="featured"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="wrap" id="register">
+  <h2 class="title"><em>&gt;</em> Registration</h2>
+  <p class="sub">Register, look up, update or cancel your spot.</p>
+  <div class="tabs"><button id="tab-reg" class="on">📝 Register</button><button id="tab-find">🔎 My registration</button></div>
+  <div id="pane-reg"><div class="card" id="regCard"></div></div>
+  <div id="pane-find" hidden>
+    <div class="card"><h2>Find your registration</h2>
+      <form id="findForm" class="row"><input id="q" placeholder="Email or Registration ID (REG-XXXXXX)" required><button class="btn">Search</button></form>
+    </div>
+    <div id="findMsg"></div><div id="results"></div>
+  </div>
+</section>
+
+<footer id="foot"></footer>
+
+<dialog id="dlg">
+  <h2 style="margin-top:0">Edit registration <span id="dlgId" style="color:var(--cyan);font-family:var(--mono)"></span></h2>
+  <div id="dlgMsg"></div><form id="editForm" class="f"></form>
+</dialog>
+<dialog id="calendarDlg"><h2 style="margin-top:0">October 2026</h2><div class="calendar" id="calendarGrid"></div><div class="calendar-events" id="calendarEvents"></div><div class="actions"><button class="btn ghost" id="closeCalendar">Close</button></div></dialog>
+<dialog id="venueDlg"><h2 style="margin-top:0">Fest venue</h2><p id="venueAddress"></p><div class="actions"><button class="btn ghost" id="closeVenue">Close</button></div></dialog>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let FEST = {}, EVENTS = [], found = [];
+let selectedEvent = sessionStorage.getItem('takshak-selected-event') || '';
+const emoji = n => (EVENTS.find(e => e.name === n) || {}).emoji || '⚡';
+const eventFor = n => EVENTS.find(e => e.name === n);
+const formatDate = value => new Date(`${value}T12:00:00`).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+function setSelectedEvent(name) {
+  selectedEvent = eventFor(name) ? name : '';
+  if (selectedEvent) sessionStorage.setItem('takshak-selected-event', selectedEvent);
+  let form = $('#regForm');
+  if (!form && selectedEvent) { renderRegBody(); form = $('#regForm'); }
+  if (form) { form.elements.event.value = selectedEvent; updateEventDetails(form); }
+}
+function updateEventDetails(form) {
+  const event = eventFor(form.elements.event.value);
+  const details = form.querySelector('.event-details');
+  if (!details) return;
+  details.innerHTML = event ? `<strong>${esc(event.name)}</strong><br>${esc(event.blurb)}<br>📅 ${formatDate(event.date)} · 🕒 ${esc(event.time)}<br>📍 ${esc(FEST.venue)}` : 'Choose an event to see its schedule and venue.';
+}
+
+async function api(path, opts = {}) {
+  const r = await fetch('/api' + path, { headers: { 'Content-Type': 'application/json' }, ...opts });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw d;
+  return d;
+}
+const errText = e => e.details ? e.details.join(' · ') : (e.message || e.error || 'Could not reach the server');
+const show = (el, cls, text) => el.innerHTML = text ? `<div class="msg ${cls}">${esc(text)}</div>` : '';
+
+// ---------- Opening page ----------
+function buildHero() {
+  $('#festName').textContent = FEST.name; $('#tag').textContent = FEST.tagline;
+  $('#org').textContent = '🎓 ' + FEST.organiser;
+  $('#chips').innerHTML = `<button type="button" id="openCalendar">📅 ${esc(FEST.dates)}</button><button type="button" id="openVenue">📍 Mar Athanasius College of Engineering</button><button type="button" id="eventCount">🏆 ${EVENTS.length} events</button>`;
+  $('#openCalendar').onclick = () => openCalendar('2026-10-02');
+  $('#openVenue').onclick = () => $('#venueDlg').showModal();
+  $('#eventCount').onclick = () => $('#events').scrollIntoView({ behavior: 'smooth' });
+  $('#venueAddress').textContent = FEST.venue;
+  $('#foot').textContent = `© ${FEST.name} · ${FEST.organiser}`;
+  const em = ['💻','🤖','🚀','🧠','⚡','🛰️','🎮','🔧','🛸','👾','🧬','📡','🔌','🚁','🖥️','⌨️','🧩','🔋'];
+  $('#floaters').innerHTML = em.map((e, i) => `<span style="left:${(i * 53 + 7) % 94}%;top:${(i * 37 + 11) % 82}%;font-size:${1.6 + (i % 4) * .7}rem;--d:${5 + (i % 5)}s;--l:-${i * .7}s">${e}</span>`).join('');
+  const t = EVENTS.map(e => `${e.emoji} ${e.name.toUpperCase()}`).join('  ///  ');
+  $('#ticker').innerHTML = `<span>${t}  ///  </span><span>${t}  ///  </span>`;
+  const line = '> boot takshak --tech-fest --register', el = $('#typed'); let i = 0;
+  (function type() { el.textContent = line.slice(0, ++i); if (i < line.length) setTimeout(type, 55); })();
+}
+
+function buildEvents() {
+  $('#featured').innerHTML = '';
+  $('#grid').innerHTML = EVENTS.map(e => `<article class="ev" data-reg="${esc(e.name)}" tabindex="0" role="link" aria-label="Register for ${esc(e.name)}">
+    <div class="em">${e.emoji}</div><span class="cat">${esc(e.category)}</span><h4>${esc(e.name)}</h4><p>${esc(e.blurb)}</p>
+    <div class="event-meta"><span>📅 ${formatDate(e.date)}</span><span>🕒 ${esc(e.time)}</span><span>📍 ${esc(FEST.venue)}</span></div>
+    <div class="actions"><button type="button" class="btn" data-reg="${esc(e.name)}">Register</button></div></article>`).join('');
+}
+document.addEventListener('click', e => {
+  const target = e.target.closest('[data-reg]'); if (!target) return;
+  e.preventDefault();
+  if ($('#calendarDlg').open) $('#calendarDlg').close();
+  setSelectedEvent(target.dataset.reg); tab('reg');
+  $('#register').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => document.querySelector('#regForm input[name=name]')?.focus(), 400);
+});
+$('#grid').addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.ev')) { e.preventDefault(); setSelectedEvent(e.target.dataset.reg); tab('reg'); $('#register').scrollIntoView({ behavior: 'smooth' }); } });
+$('#navFind').onclick = () => { tab('find'); if ($('#q').value.trim()) $('#findForm').requestSubmit(); };
+$('#closeCalendar').onclick = () => $('#calendarDlg').close();
+$('#closeVenue').onclick = () => $('#venueDlg').close();
+
+// ---------- Forms ----------
+function fields(v = {}, submitLabel = 'Submit', extra = '') {
+  const activeEvent = v.event || selectedEvent;
+  const ev = EVENTS.map(e => `<option value="${esc(e.name)}" ${e.name === activeEvent ? 'selected' : ''}>${e.emoji} ${esc(e.name)}</option>`).join('');
+  return `
+    <label>Full name<input name="name" required value="${esc(v.name)}"></label>
+    <label>Email<input name="email" type="email" required value="${esc(v.email)}"></label>
+    <label>Phone number<input name="phone" type="tel" required pattern="\\+?[0-9]{10,13}" value="${esc(v.phone)}" placeholder="10-digit number"></label>
+    <label>College<input name="college" required value="${esc(v.college)}"></label>
+    <label class="full">Event name<select name="event" required><option value="">Choose an event</option>${ev}</select></label>
+    <div class="event-details">Choose an event to see its schedule and venue.</div>
+    <div class="full actions">${extra}<button class="btn">${submitLabel}</button></div>`;
+}
+function readForm(form) {
+  const o = {}; new FormData(form).forEach((v, k) => { v = v.trim(); if (v !== '') o[k] = k === 'year' ? Number(v) : v; }); return o;
+}
+function tab(w) {
+  $('#pane-reg').hidden = w !== 'reg'; $('#pane-find').hidden = w !== 'find';
+  $('#tab-reg').classList.toggle('on', w === 'reg'); $('#tab-find').classList.toggle('on', w === 'find');
+}
+function showRegister() { if (!$('#regForm')) renderRegBody(); tab('reg'); }
+$('#tab-reg').onclick = showRegister; $('#navRegister').onclick = showRegister; $('#registerNow').onclick = showRegister;
+$('#tab-find').onclick = () => tab('find');
+
+function openCalendar(date = '2026-10-02') {
+  renderCalendar(date);
+  $('#calendarDlg').showModal();
+}
+function renderCalendar(date) {
+  const firstDay = new Date(2026, 9, 1).getDay();
+  const days = new Date(2026, 10, 0).getDate();
+  const headers = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => `<div class="cal-head">${d}</div>`).join('');
+  const blanks = Array.from({ length: firstDay }, () => '<div aria-hidden="true"></div>').join('');
+  const cells = Array.from({ length: days }, (_, i) => {
+    const day = i + 1, key = `2026-10-${String(day).padStart(2, '0')}`;
+    const count = EVENTS.filter(event => event.date === key).length;
+    return `<button type="button" class="cal-day ${count ? 'fest-day' : ''} ${date === key ? 'selected' : ''}" data-caldate="${key}">${day}${count ? `<small>${count} events</small>` : ''}</button>`;
+  }).join('');
+  $('#calendarGrid').innerHTML = headers + blanks + cells;
+  const dayEvents = EVENTS.filter(event => event.date === date);
+  $('#calendarEvents').innerHTML = `<h3>${formatDate(date)} · ${dayEvents.length} ${dayEvents.length === 1 ? 'event' : 'events'}</h3>` +
+    (dayEvents.length ? dayEvents.map(event => `<button type="button" class="link" data-reg="${esc(event.name)}">${event.emoji} ${esc(event.name)} · ${esc(event.time)}</button>`).join('') : '<p class="empty">No fest events scheduled on this date.</p>');
+}
+$('#calendarGrid').onclick = e => {
+  const day = e.target.closest('[data-caldate]');
+  if (day) renderCalendar(day.dataset.caldate);
+};
+$('#results').addEventListener('click', e => {
+  const dateButton = e.target.closest('[data-regdate]');
+  if (dateButton) openCalendar(dateButton.dataset.regdate);
+});
+
+function renderRegBody() {
+  $('#regCard').innerHTML = `<h2>New registration</h2><div id="regMsg"></div><form id="regForm" class="f">${fields({}, '🚀 Register')}</form>`;
+  $('#regForm').elements.event.onchange = e => setSelectedEvent(e.target.value);
+  updateEventDetails($('#regForm'));
+  $('#regForm').onsubmit = async e => {
+    e.preventDefault(); const btn = e.target.querySelector('.btn'); btn.disabled = true;
+    try {
+      const r = (await api('/registrations', { method: 'POST', body: JSON.stringify(readForm(e.target)) })).registration;
+      $('#regCard').innerHTML = `<h2>${emoji(r.event)} You're in, ${esc(r.name)}!</h2>
+        <div class="msg ok">Registered for ${esc(r.event)} at ${esc(FEST.name)}. Keep this ID to view, edit or cancel later.</div>
+        <div class="idbox">${esc(r.id)}</div><div class="actions"><button class="btn ghost" id="viewMyRegistration">My registration</button><button class="btn ghost" id="another">Register for another event</button></div>`;
+      $('#viewMyRegistration').onclick = () => { $('#q').value = r.email; tab('find'); $('#findForm').requestSubmit(); };
+      $('#another').onclick = renderRegBody;
+    } catch (err) { show($('#regMsg'), 'err', errText(err)); btn.disabled = false; }
+  };
+}
+
+// ---------- Search / view / edit / cancel ----------
+async function findRegistrations(q) {
+  show($('#findMsg'), '', '');
+  try {
+    found = /^REG-/i.test(q) ? [await api('/registrations/' + encodeURIComponent(q.toUpperCase()))]
+      : (await api('/registrations?email=' + encodeURIComponent(q))).registrations;
+  } catch (err) { found = []; show($('#findMsg'), 'err', errText(err)); }
+  renderResults();
+}
+$('#findForm').onsubmit = async e => { e.preventDefault(); await findRegistrations($('#q').value.trim()); };
+function renderResults() {
+  if (!found.length) { $('#results').innerHTML = $('#findMsg').innerHTML ? '' : '<div class="empty">No registrations found.</div>'; return; }
+  $('#results').innerHTML = found.map(r => {
+    const event = eventFor(r.event);
+    return `
+    <div class="card reg ${r.status}">
+      <div class="top"><h3>${emoji(r.event)} ${esc(r.event)}</h3><span class="badge ${r.status}">${esc(r.status)}</span></div>
+      <div class="meta"><span>ID <b>${esc(r.id)}</b></span><span>Name <b>${esc(r.name)}</b></span>
+        <span>Email <b>${esc(r.email)}</b></span>${r.college ? `<span>College <b>${esc(r.college)}</b></span>` : ''}
+        ${r.phone ? `<span>Phone <b>${esc(r.phone)}</b></span>` : ''}<span>Registered <b>${new Date(r.registeredAt).toLocaleDateString()}</b></span></div>
+      <p>${esc(event?.blurb || 'Event details are not available for this legacy registration.')}</p>
+      <div class="event-meta">${event ? `<span>🕒 ${esc(event.time)}</span><span>📍 ${esc(FEST.venue)}</span>` : ''}
+        <span><button type="button" class="link" data-regdate="${esc(event?.date || '2026-10-02')}">📅 Show event date</button></span></div>
+      ${r.status === 'active' ? `<div class="actions"><button class="btn ghost" data-edit="${esc(r.id)}">✏️ Edit</button>
+        <button class="btn danger" data-cancel="${esc(r.id)}">Cancel registration</button></div>` : ''}
+    </div>`;
+  }).join('');
+}
+$('#results').onclick = async e => {
+  const editId = e.target.dataset.edit, cancelId = e.target.dataset.cancel;
+  if (editId) openEdit(found.find(r => r.id === editId));
+  if (cancelId && confirm('Cancel this registration? You can register again later.')) {
+    try {
+      const d = await api('/registrations/' + cancelId, { method: 'DELETE' });
+      found = found.map(r => r.id === cancelId ? d.registration : r);
+      show($('#findMsg'), 'ok', 'Registration cancelled.'); renderResults();
+    } catch (err) { show($('#findMsg'), 'err', errText(err)); }
+  }
+};
+function openEdit(r) {
+  $('#dlgId').textContent = r.id; show($('#dlgMsg'), '', '');
+  $('#editForm').innerHTML = fields(r, 'Save changes', '<button type="button" class="btn ghost" id="closeDlg">Close</button>');
+  $('#editForm').elements.event.onchange = e => { setSelectedEvent(e.target.value); updateEventDetails($('#editForm')); };
+  updateEventDetails($('#editForm'));
+  $('#closeDlg').onclick = () => $('#dlg').close();
+  $('#editForm').onsubmit = async e => {
+    e.preventDefault();
+    try {
+      const d = await api('/registrations/' + r.id, { method: 'PUT', body: JSON.stringify(readForm(e.target)) });
+      found = found.map(x => x.id === r.id ? d.registration : x);
+      $('#dlg').close(); show($('#findMsg'), 'ok', 'Registration updated.'); renderResults();
+    } catch (err) { show($('#dlgMsg'), 'err', errText(err)); }
+  };
+  $('#dlg').showModal();
+}
+
+// ---------- Init ----------
+(async () => {
+  try { const d = await api('/fest'); FEST = d.fest; EVENTS = d.events; }
+  catch { FEST = { name: 'TAKSHAK', tagline: '', organiser: '', dates: '', venue: '' }; }
+  buildHero(); buildEvents(); renderRegBody();
+})();
+</script>
+</body>
+</html>

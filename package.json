@@ -1,0 +1,8 @@
+{
+  "name": "tech-event-registration",
+  "version": "1.0.0",
+  "description": "Registration management API for a college technical event",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "express": "^4.19.2" }
+}
